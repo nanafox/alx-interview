@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 
-from typing import List
 
-
-def pascal_triangle(n: int) -> List[List[int]]:
+def pascal_triangle(n):
     """
     Generate a Pascal's triangle with n rows.
 
@@ -50,7 +48,7 @@ def pascal_triangle(n: int) -> List[List[int]]:
     return triangle
 
 
-def print_triangle(triangle: List[List[int]]):
+def print_triangle(triangle):
     """
     Print the triangle
 
