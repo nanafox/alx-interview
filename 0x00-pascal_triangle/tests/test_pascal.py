@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+
+"""This module tests the Pascal's Triangle function."""
+
 import os
 import sys
 from contextlib import redirect_stdout
