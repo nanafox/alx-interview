@@ -1,0 +1,17 @@
+{
+  "name": "0x06-starwars_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "0-starwars_characters.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nanafox/alx-interview.git"
+  },
+  "private": true,
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
