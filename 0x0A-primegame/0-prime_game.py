@@ -4,7 +4,10 @@
 
 
 def sieve_of_eratosthenes(n):
-    """Generate a list of prime numbers up to n using the Sieve of Eratosthenes."""
+    """
+    Generate a list of prime numbers up to n using the Sieve
+    of Eratosthenes.
+    """
     prime = [True] * (n + 1)
     p = 2
     while p * p <= n:
