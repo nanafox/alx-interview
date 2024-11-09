@@ -13,53 +13,55 @@ def n_queens(n: int):
     Returns:
         The chessboard with the Queens placed in non-attacking positions.
     """
-
-    def is_non_attack(board: list, row: int, col: int) -> bool:
-        """
-        Check whether a slot is non-attacking when a Queen is placed.
-
-        Args:
-            board (list): The board to check.
-            row (int): The current row on the board.
-            col (int): The column of the board.
-
-        Returns:
-            bool: True if the position leads to a non-attacking placement,
-            else False
-        """
-        for i in range(row):
-            if (
-                board[i] == col  # check for vertical possible attacks
-                or board[i] - i == col - row
-                or board[i] + i == col + row
-            ):
-                return False
-
-        return True
-
-    def insert_queen(board: list, row: int) -> None:
-        """
-        Handle the placement of Queens in a non-attacking fashion.
-
-        Args:
-            board (list): The board to insert into (temporal).
-            row (int): The current row in the board.
-        """
-        if row == n:  # base case
-            chessboard.append([[i, board[i]] for i in range(n)])
-            return
-
-        for col in range(n):
-            if is_non_attack(board, row, col):
-                board[row] = col
-                insert_queen(board, row + 1)
-                board[row] = 0
-
     chessboard = []
     board = [0] * n
-    insert_queen(board, 0)
+    insert_queen(board=board, row=0, n=n, chessboard=chessboard)
 
     return chessboard
+
+
+def insert_queen(board: list, row: int, n: int, chessboard: list) -> None:
+    """
+    Handle the placement of Queens in a non-attacking fashion.
+
+    Args:
+        board (list): The board to insert into (temporal).
+        row (int): The current row in the board.
+    """
+    if row == n:  # base case
+        chessboard.append([[i, board[i]] for i in range(n)])
+        return
+
+    for col in range(n):
+        if is_non_attack(board, row, col):
+            board[row] = col
+            insert_queen(board=board, row=row + 1, n=n, chessboard=chessboard)
+            board[row] = 0
+
+
+def is_non_attack(board: list, row: int, col: int) -> bool:
+    """
+    Check whether a slot is non-attacking when a Queen is placed.
+
+    Args:
+        board (list): The board to check.
+        row (int): The current row on the board.
+        col (int): The column of the board.
+
+    Returns:
+        bool: True if the position leads to a non-attacking placement,
+        else False
+    """
+    for i in range(row):
+        # check for vertical, horizontal and diagonal matches
+        if (
+            board[i] == col  # check for vertical possible attacks
+            or board[i] - i == col - row
+            or board[i] + i == col + row
+        ):
+            return False
+
+    return True
 
 
 def print_non_attack_combinations(chessboard) -> None:
